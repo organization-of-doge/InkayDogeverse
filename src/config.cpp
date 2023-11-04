@@ -119,7 +119,7 @@ WUPS_GET_CONFIG() {
     WUPSConfigCategoryHandle patching_cat;
     WUPSConfig_AddCategoryByNameHandled(config, "Patching", &patching_cat);
 
-    WUPSConfigItemBoolean_AddToCategoryHandled(config, patching_cat, "connect_to_network", "Connect to the Pretendo network", Config::connect_to_network, &connect_to_network_changed);
+    WUPSConfigItemBoolean_AddToCategoryHandled(config, patching_cat, "connect_to_network", "Connect to Sapphire", Config::connect_to_network, &connect_to_network_changed);
     
     WUPSConfigCategoryHandle boss_cat;
     WUPSConfig_AddCategoryByNameHandled(config, "BOSS settings", &boss_cat);

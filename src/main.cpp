@@ -47,13 +47,13 @@
     Mandatory plugin information.
     If not set correctly, the loader will refuse to use the plugin.
 **/
-WUPS_PLUGIN_NAME("Inkay");
-WUPS_PLUGIN_DESCRIPTION("Pretendo Network Patcher");
-WUPS_PLUGIN_VERSION("v2.3");
-WUPS_PLUGIN_AUTHOR("Pretendo contributors");
+WUPS_PLUGIN_NAME("Inkay-Sapphire");
+WUPS_PLUGIN_DESCRIPTION("Sapphire Patcher");
+WUPS_PLUGIN_VERSION("v1.2");
+WUPS_PLUGIN_AUTHOR("Pretendo contributors (modded by TraceEntertains and NoNameGiven)");
 WUPS_PLUGIN_LICENSE("ISC");
 
-WUPS_USE_STORAGE("inkay");
+WUPS_USE_STORAGE("inkay_sapphire");
 WUPS_USE_WUT_DEVOPTAB();
 
 #include <kernel/kernel.h>
@@ -129,12 +129,12 @@ INITIALIZE_PLUGIN() {
         for (const auto& patch : url_patches) {
             write_string(patch.address, patch.url);
         }
-        DEBUG_FUNCTION_LINE("Pretendo URL and NoSSL patches applied successfully.");
-        StartNotificationThread("Using Pretendo Network");
+        DEBUG_FUNCTION_LINE("Sapphire URL and NoSSL patches applied successfully.");
+        StartNotificationThread("Using Sapphire");
     }
     else {
-        DEBUG_FUNCTION_LINE("Pretendo URL and NoSSL patches skipped.");
-        StartNotificationThread("Using Nintendo Network");
+        DEBUG_FUNCTION_LINE("Sapphire URL and NoSSL patches skipped.");
+        StartNotificationThread("Not Using Sapphire");
     }
 
     MCP_Close(mcp);
