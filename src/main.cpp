@@ -156,13 +156,13 @@ ON_APPLICATION_START() {
     WHBLogUdpInit();
     WHBLogCafeInit();
 
-    DEBUG_FUNCTION_LINE("Inkay: hewwo!\n");
+    DEBUG_FUNCTION_LINE("Inkay-Sapphire: hewwo!\n");
 
     setup_olv_libs();
     matchmaking_notify_titleswitch();
 }
 
 ON_APPLICATION_ENDS() {
-    DEBUG_FUNCTION_LINE("Inkay: shutting down...\n");
+    DEBUG_FUNCTION_LINE("Inkay-Sapphire: shutting down...\n");
     StopNotificationThread();
 }
