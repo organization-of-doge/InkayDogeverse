@@ -31,9 +31,9 @@ const char wave_original[] = {
         0x6F, 0x2E, 0x6E, 0x65, 0x74
 };
 const char wave_new[] = {
-		0x68, 0x74, 0x74, 0x70, 0x73, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-		0x00, 0x00, 0x00, 0x00, 0x2E, 0x72, 0x6D, 0x63, 0x6B, 0x30, 0x31, 0x2E,
-		0x78, 0x79, 0x7A, 0x00
+		0x68, 0x74, 0x74, 0x70, 0x73, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6F, 0x6C,
+        0x76, 0x2E, 0x6E, 0x6F, 0x6E, 0x61, 0x6D, 0x65, 0x67, 0x69, 0x76, 0x65,
+        0x6E, 0x2E, 0x78, 0x79, 0x7A
 };
 const unsigned char miiverse_green_highlight[] = {
         0x82, 0xff, 0x05, 0xff, 0x82, 0xff, 0x05, 0xff, 0x1d, 0xff, 0x04, 0xff, 0x1d, 0xff, 0x04, 0xff
@@ -86,7 +86,7 @@ DECL_FUNCTION(int, FSOpenFile, FSClient *client, FSCmdBlock *block, char *path, 
     } else if (strcmp("vol/content/browser/rootca.pem", path) == 0) {
         int ret = real_FSOpenFile(client, block, path, mode, handle, error);
         rootca_pem_handle = *handle;
-        DEBUG_FUNCTION_LINE("Inkay: Found Miiverse CA, replacing...");
+        DEBUG_FUNCTION_LINE("Inkay-Aquamarine: Found Miiverse CA, replacing...");
         return ret;
     }
 
@@ -96,7 +96,7 @@ DECL_FUNCTION(int, FSOpenFile, FSClient *client, FSCmdBlock *block, char *path, 
 DECL_FUNCTION(FSStatus, FSReadFile, FSClient *client, FSCmdBlock *block, uint8_t *buffer, uint32_t size, uint32_t count,
               FSFileHandle handle, uint32_t unk1, uint32_t flags) {
     if (size != 1) {
-        DEBUG_FUNCTION_LINE("Inkay: Miiverse CA replacement failed!");
+        DEBUG_FUNCTION_LINE("Inkay-Aquamarine: Miiverse CA replacement failed!");
     }
 
     if (rootca_pem_handle && *rootca_pem_handle == handle) {
@@ -104,7 +104,7 @@ DECL_FUNCTION(FSStatus, FSReadFile, FSClient *client, FSCmdBlock *block, uint8_t
 
         //this can't be done above (in the FSOpenFile hook) since it's not loaded yet.
         //the hardcoded offsets suck but they really are at Random Places In The Heap
-        replaceBulk(0x11000000, 0x02000000, replacements);
+        //replaceBulk(0x11000000, 0x02000000, replacements);
         return (FSStatus) count;
     }
 
