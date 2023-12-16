@@ -67,7 +67,7 @@ DECL_FUNCTION(int, FSOpenFile, FSClient *client, FSCmdBlock *block, char *path, 
     const char *initialOma = "vol/content/initial.oma";
 
     if (!Config::connect_to_network) {
-        DEBUG_FUNCTION_LINE("Inkay: Miiverse patches skipped.");
+        DEBUG_FUNCTION_LINE("Inkay-Aquamarine: Miiverse patches skipped.");
         return real_FSOpenFile(client, block, path, mode, handle, error);
     }
 
@@ -76,7 +76,7 @@ DECL_FUNCTION(int, FSOpenFile, FSClient *client, FSCmdBlock *block, char *path, 
         //we do it when loading this file since it should only load once, preventing massive lag spikes as it searches all of MEM2 xD
         //WHBLogUdpInit();
 
-        DEBUG_FUNCTION_LINE("Inkay: hewwo!\n");
+        DEBUG_FUNCTION_LINE("Inkay-Aquamarine: hewwo!\n");
 
         auto olv_ok = setup_olv_libs();
         // Patch applet binary too
